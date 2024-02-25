@@ -12,7 +12,8 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        $empresas = Empresa::all();
+        return view('/dashboard/empresa', ['empresas' => $empresas]);
     }
 
     /**

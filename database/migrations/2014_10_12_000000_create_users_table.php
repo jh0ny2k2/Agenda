@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->string('ciudad');
-            $table->unsignedBigInteger('empresaId');
+            $table->unsignedBigInteger('empresaId')->nullable();
             $table->foreign('empresaId')->references('id')->on('empresas');
             $table->string('password');
             $table->string('rol');

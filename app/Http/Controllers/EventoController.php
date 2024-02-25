@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class EventoController extends Controller
 {
+
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
+
     /**
      * Display a listing of the resource.
      */
