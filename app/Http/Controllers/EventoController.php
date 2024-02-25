@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Empresa;
 use App\Models\Evento;
+use App\Models\User;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 
 class EventoController extends Controller
@@ -10,7 +14,12 @@ class EventoController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        $eventos = Evento::count();
+        $categorias = Categoria::count();
+        $usuarios = User::count();
+        $empresas = Empresa::count();
+
+        return view('dashboard', ['evento' => $eventos, 'categoria' => $categorias, 'usuario' => $usuarios, 'empresa' => $empresas]);
     }
 
 

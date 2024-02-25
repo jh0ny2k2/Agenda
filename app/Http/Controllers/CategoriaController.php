@@ -13,7 +13,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $categoria = Categoria::all();
-        return view('/dashboard'. ['categorias' => $categoria]);
+        return view('/dashboard/categoria', ['categorias' => $categoria]);
     }
 
     /**

@@ -67,7 +67,7 @@
                         </a>
                     </li>
                     <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="buttons.html">
+                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('usuarios') }}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
                             </svg>
@@ -110,11 +110,11 @@
                                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                 {{ __('Users') }}
                                 </p>
-                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    6389
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 ml-4">
+                                    {{ $usuario }}
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mt-1">
-                                    <a href="">Visualizar <i class="zmdi zmdi-arrow-right"></i></a>
+                                    <a href="{{ route('usuarios') }}">Visualizar <i class="zmdi zmdi-arrow-right"></i></a>
                                 </p>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                                 {{ __('Company') }}s
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    $ 46,760.89
+                                    {{ $empresa }}
                                 </p>
 
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mt-1">
@@ -150,7 +150,7 @@
                                 {{ __('Event') }}s
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    376
+                                    {{ $evento }}
                                 </p>
 
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mt-1">
@@ -170,10 +170,10 @@
                                 {{ __('Category') }}s
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    35
+                                    {{ $categoria }}
                                 </p>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mt-1">
-                                    <a href="">Visualizar <i class="zmdi zmdi-arrow-right"></i></a>
+                                    <a href="{{ route('categorias') }}">Visualizar <i class="zmdi zmdi-arrow-right"></i></a>
                                 </p>
                             </div>
                         </div>

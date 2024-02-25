@@ -30,7 +30,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     // MOSTRAMOS TODOS LOS DATOS
     Route::get('/dashboard', [EventoController::class, 'dashboard'])->name('dashboard');
     Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas');
-    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias');   
+    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias'); 
+    Route::get('/usuarios', [ProfileController::class, 'index'])->name('usuarios'); 
 });
 
 Route::prefix('admin')->middleware(['auth', 'verified', 'rol:creadorEventos'])->group(function () { 
