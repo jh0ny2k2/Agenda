@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Empresa;
 use App\Models\Evento;
+use App\Models\Experiencia;
 use App\Models\User;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
@@ -18,8 +19,9 @@ class EventoController extends Controller
         $categorias = Categoria::count();
         $usuarios = User::count();
         $empresas = Empresa::count();
+        $experiencia = Experiencia::count();
 
-        return view('dashboard', ['evento' => $eventos, 'categoria' => $categorias, 'usuario' => $usuarios, 'empresa' => $empresas]);
+        return view('dashboard', ['evento' => $eventos, 'categoria' => $categorias, 'usuario' => $usuarios, 'empresa' => $empresas, 'experiencia' => $experiencia]);
     }
 
 

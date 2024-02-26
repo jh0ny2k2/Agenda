@@ -21,7 +21,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('/dashboard/categoria/addCategoria');
     }
 
     /**
@@ -29,7 +29,11 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
+        $categoria->save();
+
+        return redirect()->route('categorias');
     }
 
     /**
@@ -59,8 +63,10 @@ class CategoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function destroy($id)
     {
-        //
+        echo 'hola';
+        // Categoria::destroy($id);
+        // return redirect()->route('categorias');
     }
 }

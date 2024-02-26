@@ -21,7 +21,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        //
+        return view('/dashboard/empresa/addEmpresa');
     }
 
     /**
@@ -29,7 +29,16 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empresa = new Empresa();
+        $empresa->nombre = $request->nombre;
+        $empresa->direccion = $request->direccion;
+        $empresa->telefono = $request->telefono;
+        $empresa->web = $request->web;
+        $empresa->email = $request->email;
+        $empresa->informacionExtra = $request->extra;
+        $empresa->save();
+
+        return redirect()->route('empresas');
     }
 
     /**
@@ -58,9 +67,10 @@ class EmpresaController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     */
-    public function destroy(Empresa $empresa)
+     */ 
+    public function destroy($id)
     {
-        //
+        Empresa::destroy($id);
+        return redirect()->route('empresas');
     }
 }
