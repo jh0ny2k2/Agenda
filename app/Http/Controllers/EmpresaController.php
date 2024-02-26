@@ -68,9 +68,9 @@ class EmpresaController extends Controller
     /**
      * Remove the specified resource from storage.
      */ 
-    public function destroy($id)
+    public function destroy(Empresa $empresa)
     {
-        Empresa::destroy($id);
+        Empresa::destroy($empresa->id);
         return redirect()->route('empresas');
     }
 }
