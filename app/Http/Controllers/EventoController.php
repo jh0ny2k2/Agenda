@@ -30,7 +30,8 @@ class EventoController extends Controller
      */
     public function index()
     {
-        //
+        $eventos = Evento::all();
+        return view('/dashboard/evento', ['eventos' => $eventos]);
     }
 
     /**
@@ -38,7 +39,8 @@ class EventoController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::all();
+        return view('/dashboard/evento/addEvento', ['categorias' => $categorias]);
     }
 
     /**
@@ -46,23 +48,44 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $evento = new Evento();
+        $evento->nombre = $request->nombre;
+        $evento->fecha = $request->fecha;
+        $evento->hora = $request->hora;
+        $evento->descripcion = $request->descripcion;
+        $evento->ciudad = $request->ciudad;
+        $evento->direccion = $request->direccion;
+        $evento->estado = $request->estado;
+        $evento->aforoMax = $request->capacidad;
+        $evento->tipo = $request->tipo;
+        $evento->numMaxEntradasPorPersona  = $request->entradas;
+        $evento->CategoriaId =  $request->categorias;
+        $evento->save();
+
+        $id = $evento->id;
+        $request->file('imagen')->storeAs(
+            'public',
+            'evento_' . $id . '.jpg'
+        );
+        return redirect()->route('eventos'); 
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Evento $evento)
+    public function show($id)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Evento $evento)
+    public function edit($id)
     {
-        //
+        $evento = Evento::where('id', $id)->first();
+        return view('/dashboard/evento/editEvento', ['eventos' => $evento]);
     }
 
     /**

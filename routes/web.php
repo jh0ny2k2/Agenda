@@ -22,6 +22,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// DASHBOARD
+Route::get('/dashboard', [EventoController::class, 'dashboard'])->name('dashboard');
+
+
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () { 
     // PERFIL
@@ -35,13 +39,15 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 
     // EVENTOS
     Route::get('/eventos', [EventoController::class, 'index'])->name('eventos');
+    Route::get('/addEvento', [EventoController::class, 'create'])->name('addEvento');
+    Route::post('/adEvento', [EventoController::class, 'store'])->name('adEvento');
+    Route::get('/evento/editar/{id}', [EventoController::class, 'edit']);
+    Route::get('/evento/{id}', [EventoController::class, 'delete'])->name('eliminarEvento');
     
     // EXPERIENCIA
     Route::get('/experiencias', [ExperienciaController::class, 'index'])->name('experiencias');
     
-    // DASHBOARD
-    Route::get('/dashboard', [EventoController::class, 'dashboard'])->name('dashboard');
-
+    
     // EMPRESA
     Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas');
     Route::get('/addEmpresa', [EmpresaController::class, 'create'])->name('addEmpresa');
