@@ -41,8 +41,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/eventos', [EventoController::class, 'index'])->name('eventos');
     Route::get('/addEvento', [EventoController::class, 'create'])->name('addEvento');
     Route::post('/adEvento', [EventoController::class, 'store'])->name('adEvento');
-    Route::get('/evento/editar/{id}', [EventoController::class, 'edit']);
-    Route::get('/evento/{id}', [EventoController::class, 'delete'])->name('eliminarEvento');
+    Route::get('/evento/editar/{id}', [EventoController::class, 'edit'])->name('editEvento');
+    Route::post('/evento/update/{id}', [EventoController::class, 'update'])->name('updateEvento');
+    Route::get('/evento/{id}', [EventoController::class, 'destroy'])->name('eliminarEvento');
     
     // EXPERIENCIA
     Route::get('/experiencias', [ExperienciaController::class, 'index'])->name('experiencias');
@@ -52,13 +53,13 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas');
     Route::get('/addEmpresa', [EmpresaController::class, 'create'])->name('addEmpresa');
     Route::post('/adEmpresa', [EmpresaController::class, 'store'])->name('adEmpresa');
-    Route::get('/delEmpresa/{id}', [EmpresaController::class, 'delete']);
+    Route::get('/delEmpresa/{id}', [EmpresaController::class, 'destroy']);
     
     // CATEGORIAS
     Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias');
     Route::get('/addCategoria',[CategoriaController::class, 'create'])->name('addCategoria');
     Route::post('/adCategoria', [CategoriaController::class, 'store'])->name("adproducto");
-    Route::get('/admin/categoria/{id}', [CategoriaController::class, 'destroy']);
+    Route::get('/categoria/{id}', [CategoriaController::class, 'destroy']);
 });
 
 Route::prefix('admin')->middleware(['auth', 'verified', 'rol:creadorEventos'])->group(function () { 

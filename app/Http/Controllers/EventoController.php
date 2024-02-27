@@ -76,7 +76,7 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -84,23 +84,39 @@ class EventoController extends Controller
      */
     public function edit($id)
     {
+        $categorias = Categoria::all();
         $evento = Evento::where('id', $id)->first();
-        return view('/dashboard/evento/editEvento', ['eventos' => $evento]);
+        return view('/dashboard/evento/editEvento', ['eventos' => $evento, 'categorias' => $categorias]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Evento $evento)
+    public function update(Request $request, $id)
     {
-        //
+        $evento = Evento::where('id', $request->id)->first();
+        $evento->nombre = $request->nombre;
+        $evento->fecha = $request->fecha;
+        $evento->hora = $request->hora;
+        $evento->descripcion = $request->descripcion;
+        $evento->ciudad = $request->ciudad;
+        $evento->direccion = $request->direccion;
+        $evento->estado = $request->estado;
+        $evento->aforoMax = $request->capacidad;
+        $evento->tipo = $request->tipo;
+        $evento->numMaxEntradasPorPersona  = $request->entradas;
+        $evento->CategoriaId =  $request->categorias;
+        $evento->save();
+
+        return redirect()->route('eventos');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Evento $evento)
+    public function destroy($id)
     {
-        //
+        Evento::destroy($id);
+        return redirect()->route('eventos');
     }
 }

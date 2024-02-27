@@ -187,12 +187,12 @@
                                         </p>
                             </td>
                             <td class="p-4 border-b border-blue-gray-50">
-                                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                                        <p class="text-ellipsis font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
                                             {{ $empresa -> informacionExtra }}
                                         </p>
                             </td>
                             <td class="p-4 border-b border-blue-gray-50">
-                                <a class="px-6 py-3 text-center" href="/delEmpresa/{{$empresa->id}}"><button type="button" class="bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><i class="zmdi zmdi-delete"></i></button></a>
+                                <a class="px-6 py-3 text-center" href="/admin/delEmpresa/{{$empresa->id}}"><button type="button" class="bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><i class="zmdi zmdi-delete"></i></button></a>
                             </td>
                         </tr>
                         @endforeach
