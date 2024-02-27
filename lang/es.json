@@ -46,6 +46,7 @@
     "Category List": "Lista de categorias",
     "Events List": "Lista de eventos",
     "Event List": "Lista de eventos",
+    "Experience list": "Lista de experiencias",
     "Add User": "Añadir usuario",
     "Add company": "Añadir empresa",
     "Add event": "Añadir evento",
@@ -62,5 +63,10 @@
     "Date": "Fecha",
     "Time": "Hora",
     "Max capacity": "Capacidad máxima",
-    "Description": "Descripcion"
+    "Description": "Descripcion",
+    "Date text": "Fecha de texto",
+    "Start date": "Fecha Inicio",
+    "Link Web": "Enlace Web",
+    "Price per Person": "Precio por persona",
+    "Add experience": "Añadir Experiencia"
 }

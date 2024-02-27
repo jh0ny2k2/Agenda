@@ -39,7 +39,7 @@
         </div>
 
         <div class="mt-4">
-            <x-input-label for="direccion" :value="__('adress')" />
+            <x-input-label for="direccion" :value="__('Adress')" />
             <x-text-input id="direccion" class="block mt-1 w-full" type="text" name="direccion" :value="old('direccion')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('direccion')" class="mt-2" />
         </div>

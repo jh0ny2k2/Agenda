@@ -5,6 +5,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ExperienciaController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Experiencia;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,12 +44,15 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::post('/adEvento', [EventoController::class, 'store'])->name('adEvento');
     Route::get('/evento/editar/{id}', [EventoController::class, 'edit'])->name('editEvento');
     Route::post('/evento/update/{id}', [EventoController::class, 'update'])->name('updateEvento');
-    Route::get('/evento/{id}', [EventoController::class, 'destroy'])->name('eliminarEvento');
+    Route::get('/evento/{id}', [EventoController::class, 'destroy']);
     
     // EXPERIENCIA
     Route::get('/experiencias', [ExperienciaController::class, 'index'])->name('experiencias');
-    
-    
+    Route::get('/addExperiencia', [ExperienciaController::class, 'create'])->name('addExperiencia');
+    Route::post('/adExperiencia', [ExperienciaController::class, 'store'])->name('adExperiencia');
+    Route::get('/delExperiencia/{id}', [ExperienciaController::class, 'destroy']);
+    Route::get('/asociarExperiencia/{id}', [ExperienciaController::class. 'asociacion']);
+
     // EMPRESA
     Route::get('/empresas', [EmpresaController::class, 'index'])->name('empresas');
     Route::get('/addEmpresa', [EmpresaController::class, 'create'])->name('addEmpresa');

@@ -12,7 +12,8 @@ class ExperienciaController extends Controller
      */
     public function index()
     {
-        //
+        $experiencia = Experiencia::all();
+        return view('/dashboard/experiencias', ['experiencias' => $experiencia]);
     }
 
     /**
@@ -20,7 +21,8 @@ class ExperienciaController extends Controller
      */
     public function create()
     {
-        //
+        $empresas = Empresa::all();
+        return view('/dashboard/experiencia/addExperiencia', ['empresas' => $empresas]);
     }
 
     /**
@@ -28,8 +30,44 @@ class ExperienciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $experiencia = new Experiencia();
+        $experiencia->nombre = $request->nombre;
+        $experiencia->fechaInicio = $request->inicio;
+        $experiencia->fechaTexto = $request->texto;
+        $experiencia->descripcionCorta = $request->corta;
+        $experiencia->precioPorPersona = $request->precio;
+        $experiencia->linkWeb = $request->web;
+        $experiencia->descripcionLarga = $request->larga;
+        $experiencia->empresaId = $request->empresa;
+        $experiencia->save();
+
+        $id = $experiencia->id;
+        $request->file('imagen')->storeAs(
+            'public',
+            'experiencia_' . $id . '.jpg'
+        );
+        return redirect()->route('experiencias');
     }
+
+    /**
+     * METODO PARA VER FORM ASOCIACION DE UNA EMPRESA 
+     */
+    public function asociacion($id) {
+        $evento = Experiencia::where('id', $id)->first();
+        return redirect()->route('addAsociacion');
+    }
+
+    /**
+     * METODO PARA ASOCIAR UNA EMPRESA SI NO ESTA ASOCIADA
+     */
+    public function addAsociacion($id) {
+        $evento = Experiencia::where('id', $id)->first();
+        $evento->EmpresaId = $request->empresa;
+        $evento->save();
+
+        return redirect()->route('addAsociacion');
+    }
+
 
     /**
      * Display the specified resource.
@@ -58,8 +96,9 @@ class ExperienciaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Experiencia $experiencia)
+    public function destroy($id)
     {
-        //
+        Experiencia::destroy($id);
+        return redirect()->route('experiencias');
     }
 }
