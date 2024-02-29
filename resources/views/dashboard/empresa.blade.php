@@ -4,7 +4,7 @@
                 <div class="items-center justify-between gap-8 mb-8">
                     <div>
                         <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                            {{ __('User List') }}
+                            {{ __('Company List') }}
                         </h5>
                     </div>
                     <div class="mt-4 shrink-0">

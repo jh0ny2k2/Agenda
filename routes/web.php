@@ -26,7 +26,11 @@ Route::get('/', function () {
 // DASHBOARD
 Route::get('/dashboard', [EventoController::class, 'dashboard'])->name('dashboard');
 
+Route::post('/web', [EventoController::class, 'web'])->name('web');
 
+Route::prefix('web')->group(function() {
+
+});
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () { 
     // PERFIL

@@ -4,7 +4,7 @@
                 <div class="flex items-center justify-between gap-8 mb-8">
                     <div>
                         <h5 class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                            {{ __('Add event') }}
+                            {{ __('Add experience') }}
                         </h5>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
                                 </div>
                                 <div>
                                     <label for="texto" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('Date text') }}</label>
-                                    <input type="time" id="texto" name="texto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+                                    <input type="text" id="texto" name="texto" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                                 </div>
                                 <div>
                                     <label for="corta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('Description') }}</label>
@@ -40,7 +40,7 @@
                                     <input type="text" id="larga" name="larga" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                                 </div>
                                 <div>
-                                    <label for="empresa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('Category') }}</label>
+                                    <label for="empresa" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ __('Company') }}</label>
                                     <select name="empresa" id="empresa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         @foreach ($empresas as $empresa)
                                             <option value="{{ $empresa->id }}">{{ $empresa->nombre }}</option>

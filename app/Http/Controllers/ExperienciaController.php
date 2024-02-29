@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empresa;
 use App\Models\Experiencia;
 use Illuminate\Http\Request;
 
@@ -60,7 +61,7 @@ class ExperienciaController extends Controller
     /**
      * METODO PARA ASOCIAR UNA EMPRESA SI NO ESTA ASOCIADA
      */
-    public function addAsociacion($id) {
+    public function addAsociacion($id, Request $request) {
         $evento = Experiencia::where('id', $id)->first();
         $evento->EmpresaId = $request->empresa;
         $evento->save();
