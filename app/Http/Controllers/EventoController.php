@@ -13,9 +13,7 @@ use Illuminate\Http\Request;
 class EventoController extends Controller
 {
 
-    public function web() {
-        return view('welcome');
-    }
+    
 
     public function dashboard()
     {

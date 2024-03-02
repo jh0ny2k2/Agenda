@@ -5,6 +5,8 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ExperienciaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WebController;
+use App\Models\Evento;
 use App\Models\Experiencia;
 use Illuminate\Support\Facades\Route;
 
@@ -20,13 +22,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $evento = Evento::all();
+    return view('welcome', ['eventos' => $evento]);
 });
+
 
 // DASHBOARD
 Route::get('/dashboard', [EventoController::class, 'dashboard'])->name('dashboard');
 
-Route::post('/web', [EventoController::class, 'web'])->name('web');
+Route::post('/web', [WebController::class, 'web'])->name('web');
 
 Route::prefix('web')->group(function() {
 
