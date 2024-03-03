@@ -57,6 +57,14 @@
     
     </section>
 
+    <div class="mt-5 container">
+        <h1 class="font-semibold text-gray-900 text-xl md:text-4xl text-center leading-normal mb-6">Algunos eventos</h1>
+    </div>
+    
+    <div class="grid grid-cols-4 gap-4 text-center">
+
+        
+
     @foreach ($eventos as $evento)
     <x-cards>
         <x-slot name="titulo">
@@ -72,10 +80,14 @@
         </x-slot>
         
         <x-slot name="boton">
-            {{ $evento -> descripcion }}
+            <a class="text-center" href="">Ver Evento</a>
         </x-slot>
     </x-cards>
     @endforeach
+    </div>
 
+    <x-footer>
+        
+    </x-footer>
 
 </x-nav-web>
