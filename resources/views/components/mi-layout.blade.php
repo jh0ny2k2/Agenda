@@ -39,6 +39,8 @@
                         </x-responsive-nav-link>
                     </form>
                 </div>
+                @auth
+                
                 <ul class="mt-6">
                     <li class="relative px-6 py-3">
                         <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
@@ -52,6 +54,7 @@
                     </li>
                 </ul>
                 <ul>
+                    @if (Auth::user()->role == "administrador")
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('empresas')}}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -60,6 +63,7 @@
                             <span class="ml-4">{{ __('Company') }}</span>
                         </a>
                     </li>
+                    @endif
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('eventos') }}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -76,6 +80,7 @@
                             <span class="ml-4">{{ __('Category') }}</span>
                         </a>
                     </li>
+                    @if (Auth::user()->role == "administrador")
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('usuarios') }}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,6 +89,8 @@
                             <span class="ml-4">{{ __('Users') }}</span>
                         </a>
                     </li>
+                    @endif
+                    @if (Auth::user()->role == "administrador")
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('experiencias') }}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,13 +99,15 @@
                             <span class="ml-4">{{ __('Experiences') }}</span>
                         </a>
                     </li>
-
+                    @endif
                 </ul>
+                
+                @endauth
                 <div class="px-6 my-6">
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('milogout') }}">
                         @csrf
 
-                        <x-responsive-nav-link :href="route('logout')"
+                        <x-responsive-nav-link :href="route('milogout')"
                         onclick="event.preventDefault();
                                 this.closest('form').submit();">
                         {{ __('Log Out') }}

@@ -5,6 +5,8 @@
     <!-- Cards -->
     <div class="grid grid-cols-4 gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <!-- Card -->
+        @auth
+        @if (Auth::user()->role == "administrador")
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -23,6 +25,8 @@
                 </p>
             </div>
         </div>
+        @endif
+        @if (Auth::user()->role == "administrador")
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -37,11 +41,13 @@
                     {{ $experiencia }}
                 </p>
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mt-1">
-                    <a href="">Visualizar <i class="zmdi zmdi-arrow-right"></i></a>
+                    <a href="{{ route('experiencias') }}">Visualizar <i class="zmdi zmdi-arrow-right"></i></a>
                 </p>
             </div>
         </div>
+        @endif
         <!-- Card -->
+        @if (Auth::user()->role == "administrador")
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -61,6 +67,7 @@
                 </p>
             </div>
         </div>
+        @endif
         <!-- Card -->
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
@@ -77,7 +84,7 @@
                 </p>
 
                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mt-1">
-                    <a href="">Visualizar <i class="zmdi zmdi-arrow-right"></i></a>
+                    <a href="{{ route('eventos') }}">Visualizar <i class="zmdi zmdi-arrow-right"></i></a>
                 </p>
             </div>
         </div>
@@ -101,4 +108,5 @@
             </div>
         </div>
     </div>
+    @endauth
 </x-mi-layout>

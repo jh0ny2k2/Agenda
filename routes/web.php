@@ -26,6 +26,8 @@ Route::get('/', function () {
     return view('welcome', ['eventos' => $evento]);
 });
 
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('milogout');
+
 
 // DASHBOARD
 Route::get('/dashboard', [EventoController::class, 'dashboard'])->name('dashboard');
@@ -33,10 +35,23 @@ Route::get('/dashboard', [EventoController::class, 'dashboard'])->name('dashboar
 Route::post('/web', [WebController::class, 'web'])->name('web');
 
 Route::prefix('web')->group(function() {
+    // EVENTOS
+    Route::get('/eventosWeb', [WebController::class, 'indexEvento'])->name('eventosWeb');
+    Route::get('/verEvento/{id}', [WebController::class, 'showEvento'])->name('verEvento');
 
+    // EXPERIENCIAS
+    Route::get('/experienciasWeb', [WebController::class, 'indexExperiencia'])->name('experienciasWeb');
+    Route::get('/verExperiencia/{id}', [WebController::class, 'showExperiencia'])->name('verExperiencia');
+
+    // EXPLORA
+    Route::get('/exploraWeb', [WebController::class, 'index'])->name('exploraWeb');
 });
 
-Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () { 
+Route::middleware(['auth', 'verified', 'mdrol:asistente'])->group(function () { 
+    
+});
+
+Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:administrador'])->group(function () { 
     // PERFIL
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -74,15 +89,24 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/categoria/{id}', [CategoriaController::class, 'destroy']);
 });
 
-Route::prefix('admin')->middleware(['auth', 'verified', 'rol:creadorEventos'])->group(function () { 
+Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:creadorEventos'])->group(function () { 
+    // PERFIL
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-});
-
-
-
-
-Route::middleware('auth')->group(function () {
+    // EVENTOS
+    Route::get('/eventos', [EventoController::class, 'index'])->name('eventos');
+    Route::get('/addEvento', [EventoController::class, 'create'])->name('addEvento');
+    Route::post('/adEvento', [EventoController::class, 'store'])->name('adEvento');
+    Route::get('/evento/editar/{id}', [EventoController::class, 'edit'])->name('editEvento');
+    Route::post('/evento/update/{id}', [EventoController::class, 'update'])->name('updateEvento');
+    Route::get('/evento/{id}', [EventoController::class, 'destroy']);
     
+    // CATEGORIAS
+    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias');
+    Route::get('/addCategoria',[CategoriaController::class, 'create'])->name('addCategoria');
+    Route::post('/adCategoria', [CategoriaController::class, 'store'])->name("adproducto");
 });
 
 require __DIR__.'/auth.php';

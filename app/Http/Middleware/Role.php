@@ -13,12 +13,17 @@ class Role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $rol): Response
     {
-        if (! $request->user()->hasRole("administrador")) {
-            // Redirigir al usuario o mostrar un mensaje de error
-            return redirect('dashboard');
+        if ($request->user()->rol != $rol) {
+
+            //No tiene permiso
+
+            return redirect("/");
+
         }
+
+
 
         return $next($request);
     }

@@ -1,6 +1,7 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrfs
+    <h1>Registrarse</h1>
+    <form method="POST" action="{{ route('registrar') }}">
+        @csrf
 
         <div>
             <x-input-label for="dni" :value="__('Dni')" />

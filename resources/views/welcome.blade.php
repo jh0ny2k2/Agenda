@@ -57,33 +57,31 @@
     
     </section>
 
-    <div class="mt-5 container">
-        <h1 class="font-semibold text-gray-900 text-xl md:text-4xl text-center leading-normal mb-6">Algunos eventos</h1>
-    </div>
+    <h1 class="text-2xl md:text-3xl pl-2 my-2 border-l-4  font-sans font-bold border-teal-400  dark:text-gray-200">Eventos</h1>
     
     <div class="grid grid-cols-4 gap-4 text-center">
 
         
 
-    @foreach ($eventos as $evento)
-    <x-cards>
-        <x-slot name="titulo">
-            {{ $evento -> nombre}}
-        </x-slot>
+        @foreach ($eventos as $evento)
+        <x-cards>
+            <x-slot name="titulo">
+                {{ $evento -> nombre}}
+            </x-slot>
 
-        <x-slot name="imagen">
-            {{ asset('storage/evento_' . $evento->id . '.jpg') }}
-        </x-slot>
+            <x-slot name="imagen">
+                {{ asset('storage/evento_' . $evento->id . '.jpg') }}
+            </x-slot>
 
-        <x-slot name="descripcion">
-            {{ $evento -> descripcion }}
-        </x-slot>
-        
-        <x-slot name="boton">
-            <a class="text-center" href="">Ver Evento</a>
-        </x-slot>
-    </x-cards>
-    @endforeach
+            <x-slot name="descripcion">
+                {{ $evento -> descripcion }}
+            </x-slot>
+            
+            <x-slot name="boton">
+                <a class="text-center" href="/web/verEvento/{{ $evento -> id}}">Ver Evento</a>
+            </x-slot>
+        </x-cards>
+        @endforeach
     </div>
 
     <x-footer>

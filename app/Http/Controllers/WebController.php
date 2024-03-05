@@ -3,16 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Experiencia;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
 
     public function web() {
-        $evento = Evento::whereDate('fecha', '>=', now())
-                            ->take(4)
-                            ->first();
-        return view('welcome', ['eventos' => $evento]);
+        $eventos = Evento::whereDate('fecha', '>=', now())
+                 ->take(4)
+                 ->get();
+        return view('welcome', ['eventos' => $eventos]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function indexEvento()
+    {
+        $eventos = Evento::all();
+        return view('/web/eventos', ['eventos' => $eventos]);
+    }
+
+    public function indexExperiencia()
+    {
+        $experiencia = Experiencia::all();
+        return view('/web/experiencias', ['experiencias' => $experiencia]);
     }
 
     /**
@@ -20,7 +36,7 @@ class WebController extends Controller
      */
     public function index()
     {
-        //
+        return view('/web/explora');
     }
 
     /**
@@ -37,6 +53,19 @@ class WebController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+
+    public function showEvento(string $id)
+    {
+        $evento = Evento::where('id', $id)->first();
+        return view('/web/eventos/visualizarEventos', ['evento' => $evento]);
+    }
+
+    public function showExperiencia(string $id)
+    {
+        $experiencia = Experiencia::where('id', $id)->first();
+        return view('/web/experiencias/visualizarExperiencia', ['experiencia' => $experiencia]);
     }
 
     /**

@@ -24,8 +24,10 @@
 
                 <nav class="flex-wrap lg:flex items-center py-14 xl:relative z-10" x-data="{navbarOpen:false}">
 
-                    <div class="flex items-center justify-between mb-10 lg:mb-0">
-                        <img src="{{ asset('storage/arezzo.png') }}" alt="Logo img" width="50">
+                <div class="flex items-center justify-between mb-10 lg:mb-0">
+                        <a href="{{ route('web') }}">
+                            <img src="{{ asset('storage/arezzo.png') }}" alt="Logo img" width="50">
+                        </a>
                         <button class="lg:hidden w-10 h-10 ml-auto flex items-center justify-center text-green-700 border border-green-700 rounded-md" @click="navbarOpen = !navbarOpen">
                             <i data-feather="menu"></i>
                         </button>
@@ -33,45 +35,46 @@
 
                     <ul class="lg:flex flex-col lg:flex-row lg:items-center lg:mx-auto lg:space-x-8 xl:space-x-16" :class="{'hidden':!navbarOpen,'flex':navbarOpen}">
 
-                        <li class="font-semibold text-gray-900 text-lg hover:text-gray-400 transition ease-in-out duration-300 mb-5 lg:mb-0">
-                            <a href="#">Eventos</a>
+                        <li class="ml-28 font-semibold text-gray-900 text-lg hover:text-gray-400 transition ease-in-out duration-300 mb-5 lg:mb-0">
+                            <a href="{{ route('eventosWeb') }}">Agenda</a>
                         </li>
         
                         <li class="font-semibold text-gray-900 text-lg hover:text-gray-400 transition ease-in-out duration-300 mb-5 lg:mb-0">
-                            <a href="#">Experiencias</a>
+                            <a href="{{ route('exploraWeb') }}">Explora</a>
                         </li>
-                        <li class="block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+        
+                        <li class="font-semibold text-gray-900 text-lg hover:text-gray-400 transition ease-in-out duration-300 mb-5 lg:mb-0">
+                            <a href="{{ route('experienciasWeb') }}">Experiencia</a>
+                        </li>
+                        <li class="grid grid-cols-2 block p-1 font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900 ml-48">
                         @auth
                             @if (Auth::user()->rol == 'administrador' || Auth::user()->rol == 'creadorEventos')
                                 <a href="{{ route('dashboard') }}"
-                                    class="px-5 py-3 lg:block border-2 border-green-700 rounded-lg font-semibold text-green-700 text-lg hover:bg-green-700 hover:text-white transition ease-linear duration-500">
+                                    class="ml-48 font-semibold text-gray-900 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500  border-2 rounded-lg p-2 border-black">
                                     {{ __('Dashboard') }}</a>
                             @endif
-
-                            <form method="POST" action="{{ route('logout') }}">
+                            
+                            <form method="POST" action="{{ route('milogout') }}">
                                 @csrf
 
-                                <x-responsive-nav-link :href="route('logout')"
+                                <x-button-link :href="route('milogout')"
                                 onclick="event.preventDefault();
                                         this.closest('form').submit();">
                                 {{ __('Log Out') }}
-                                </x-responsive-nav-link>
+                                </x-button-link>
                             </form>
-                            
-                            <a href="{{ route('logout') }}">
-                                <button class="px-5 py-3 lg:block border-2 border-green-700 rounded-lg font-semibold text-green-700 text-lg hover:bg-green-700 hover:text-white transition ease-linear duration-500">{{ __('Log out') }}</button>
-                            </a>
                         @else
                             <a href="{{ route('login') }}"
-                                class="px-5 py-3 lg:block border-2 border-green-700 rounded-lg font-semibold text-green-700 text-lg hover:bg-green-700 hover:text-white transition ease-linear duration-500">
+                                class="ml-48 font-semibold text-gray-900 hover:text-gray-600 dark:text-gray-600 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 border-2 rounded-lg p-2 border-black">
                                 {{ __('Log in') }}</a>
 
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}"
-                                    class="px-5 py-3 lg:block border-2 border-green-700 rounded-lg font-semibold text-green-700 text-lg hover:bg-green-700 hover:text-white transition ease-linear duration-500">
+                                    class="ml-4 font-semibold text-gray-900 hover:text-gray-600 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 border-2 rounded-lg p-2 border-black">
                                     {{ __('Register') }}</a>
                             @endif
                         @endauth
+
 
                     </ul>
 
