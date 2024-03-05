@@ -54,7 +54,7 @@
                     </li>
                 </ul>
                 <ul>
-                    @if (Auth::user()->role == "administrador")
+                    @if (Auth::user()->rol == "administrador")
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('empresas')}}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -64,6 +64,7 @@
                         </a>
                     </li>
                     @endif
+                    @if (Auth::user()->rol == "administrador" || Auth::user()->rol == "creadorEventos")
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('eventos') }}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,6 +73,7 @@
                             <span class="ml-4">{{ __('Event') }}</span>
                         </a>
                     </li>
+                    @endif
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('categorias') }}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -80,7 +82,7 @@
                             <span class="ml-4">{{ __('Category') }}</span>
                         </a>
                     </li>
-                    @if (Auth::user()->role == "administrador")
+                    @if (Auth::user()->rol == "administrador")
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('usuarios') }}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -90,7 +92,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (Auth::user()->role == "administrador")
+                    @if (Auth::user()->rol == "administrador")
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{ route('experiencias') }}">
                             <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

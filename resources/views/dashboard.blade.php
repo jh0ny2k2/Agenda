@@ -6,7 +6,7 @@
     <div class="grid grid-cols-4 gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <!-- Card -->
         @auth
-        @if (Auth::user()->role == "administrador")
+        @if (Auth::user()->rol == "administrador")
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -26,7 +26,7 @@
             </div>
         </div>
         @endif
-        @if (Auth::user()->role == "administrador")
+        @if (Auth::user()->rol == "administrador")
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -47,7 +47,7 @@
         </div>
         @endif
         <!-- Card -->
-        @if (Auth::user()->role == "administrador")
+        @if (Auth::user()->rol == "administrador")
         <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
             <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

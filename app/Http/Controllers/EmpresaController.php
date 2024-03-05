@@ -36,7 +36,6 @@ class EmpresaController extends Controller
         $empresa->web = $request->web;
         $empresa->email = $request->email;
         $empresa->informacionExtra = $request->extra;
-        $empresa->usuarioId = Auth::user()->role
         $empresa->save();
 
         return redirect()->route('empresas');

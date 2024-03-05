@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $evento = Evento::all();
+    $evento = Evento::whereDate('fecha', '>=', now())
+                            ->take(4)
+                            ->get();
     return view('welcome', ['eventos' => $evento]);
 });
 
@@ -36,7 +38,8 @@ Route::post('/web', [WebController::class, 'web'])->name('web');
 
 Route::prefix('web')->group(function() {
     // EVENTOS
-    Route::get('/eventosWeb', [WebController::class, 'indexEvento'])->name('eventosWeb');
+    Route::get('/categorias', [WebController::class, 'categoriasWeb'])->name('categoriaWeb');
+    Route::get('/eventosWeb/{id}', [WebController::class, 'indexEvento'])->name('eventosWeb');
     Route::get('/verEvento/{id}', [WebController::class, 'showEvento'])->name('verEvento');
 
     // EXPERIENCIAS
@@ -47,8 +50,8 @@ Route::prefix('web')->group(function() {
     Route::get('/exploraWeb', [WebController::class, 'index'])->name('exploraWeb');
 });
 
-Route::middleware(['auth', 'verified', 'mdrol:asistente'])->group(function () { 
-    
+Route::middleware(['auth', 'verified'])->group(function () { 
+    Route::post('/inscripcion', [WebController::class, 'inscripcion'])->name('inscripcion');
 });
 
 Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:administrador'])->group(function () { 

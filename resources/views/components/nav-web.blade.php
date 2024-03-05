@@ -38,7 +38,7 @@
                     <ul class="lg:flex flex-col lg:flex-row lg:items-center lg:mx-auto lg:space-x-8 xl:space-x-16" :class="{'hidden':!navbarOpen,'flex':navbarOpen}">
 
                         <li class="ml-28 font-semibold text-gray-900 text-lg hover:text-gray-400 transition ease-in-out duration-300 mb-5 lg:mb-0">
-                            <a href="{{ route('eventosWeb') }}">Agenda</a>
+                            <a href="{{ route('categoriaWeb') }}">Agenda</a>
                         </li>
         
                         <li class="font-semibold text-gray-900 text-lg hover:text-gray-400 transition ease-in-out duration-300 mb-5 lg:mb-0">
@@ -91,7 +91,7 @@
 
                     <p class="font-normal text-xl text-gray-400 leading-relaxed mb-12">Deja de poner excusas y descubre cada rincon de nuestro pueblo </p>
 
-                    <a href="{{ route('eventosWeb') }}"><button class="px-6 py-4 bg-green-700 text-white font-semibold text-lg rounded-xl hover:bg-green-900 transition ease-in-out duration-500">Saber Más</button></a>
+                    <a href="{{ route('categoriaWeb') }}"><button class="px-6 py-4 bg-green-700 text-white font-semibold text-lg rounded-xl hover:bg-green-900 transition ease-in-out duration-500">Saber Más</button></a>
                 </div>
 
                 <div class="hidden xl:block xl:absolute z-0 top-0 right-0">
