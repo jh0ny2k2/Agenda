@@ -55,7 +55,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/inscripcion', [WebController::class, 'inscripcion'])->name('inscripcion');
 });
 
-Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:administrador'])->group(function () { 
+Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:administrador,creadorEventos'])->group(function () { 
     // PERFIL
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -91,26 +91,6 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:administrador'])-
     Route::get('/addCategoria',[CategoriaController::class, 'create'])->name('addCategoria');
     Route::post('/adCategoria', [CategoriaController::class, 'store'])->name("adproducto");
     Route::get('/categoria/{id}', [CategoriaController::class, 'destroy']);
-});
-
-Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:creadorEventos'])->group(function () { 
-    // PERFIL
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    // EVENTOS
-    Route::get('/eventos', [EventoController::class, 'index'])->name('eventos');
-    Route::get('/addEvento', [EventoController::class, 'create'])->name('addEvento');
-    Route::post('/adEvento', [EventoController::class, 'store'])->name('adEvento');
-    Route::get('/evento/editar/{id}', [EventoController::class, 'edit'])->name('editEvento');
-    Route::post('/evento/update/{id}', [EventoController::class, 'update'])->name('updateEvento');
-    Route::get('/evento/{id}', [EventoController::class, 'destroy']);
-    
-    // CATEGORIAS
-    Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias');
-    Route::get('/addCategoria',[CategoriaController::class, 'create'])->name('addCategoria');
-    Route::post('/adCategoria', [CategoriaController::class, 'store'])->name("adproducto");
 });
 
 require __DIR__.'/auth.php';
