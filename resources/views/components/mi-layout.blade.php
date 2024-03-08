@@ -119,7 +119,7 @@
             </div>
         </aside>
 
-        <main class="h-full ">
+        <main class="h-full overflow-y-auto">
                 <div class="container px-6 mx-auto grid">
                     
                     {{ $slot }}
