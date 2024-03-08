@@ -39,7 +39,6 @@ class WebController extends Controller
         $evento->estado = 'recibida';
         $evento->save();
 
-
         return redirect()->route('categoriaWeb');
     }
 

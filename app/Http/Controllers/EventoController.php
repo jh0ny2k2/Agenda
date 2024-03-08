@@ -7,6 +7,7 @@ use App\Models\Empresa;
 use App\Models\Evento;
 use App\Models\Experiencia;
 use App\Models\User;
+use App\Models\Inscripcion;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 
@@ -78,7 +79,38 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        //
+        $evento = Evento::findOrFail($id);
+    
+        // Recuperar inscripciones para el evento
+        $inscripciones = Inscripcion::where('eventoId', $id)->get();
+
+        // Recuperar usuarios asociados a las inscripciones
+        $usuarios = [];
+        foreach ($inscripciones as $inscripcion) {
+            $usuario = User::findOrFail($inscripcion->userId);
+            $usuarios[] = $usuario;
+        }
+
+        // Pasar datos a la vista
+        return view('/dashboard/evento/inscritos', [
+            'evento' => $evento,
+            'inscripciones' => $inscripciones,
+            'usuarios' => $usuarios
+        ]);
+
+        
+    }
+
+    public function borrarInscripcion($eventoId, $userId) {
+        $evento = Evento::find($eventoId);
+        //Solo puedes desinscribirte si la inscripción es tuya        
+        if ($userId == Auth::user()->id) {
+            $torneo->inscritos()->detach($userId);
+            return redirect()->route('web.torneos_detalle', [ 'id' => $torneoId]);
+        } else {
+            throw new AuthorizationException;
+        }
+
     }
 
     /**

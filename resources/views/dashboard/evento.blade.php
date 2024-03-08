@@ -81,6 +81,11 @@
                             </th>
                             <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
                                 <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                                    {{ __('Inscritos') }}
+                                </p>
+                            </th>
+                            <th class="p-4 border-y border-blue-gray-100 bg-blue-gray-50/50">
+                                <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
                                     {{ __('Image') }}
                                 </p>
                             </th>
@@ -158,21 +163,28 @@
                                         </p>
                             </td>
                             <td class="p-4 border-b border-blue-gray-50">
+                                    <a href="/admin/evento/verInscritos/{{$evento->id}}"><button type="button" class="px-5 py-2.5 text-center mb-2 rounded-lg border border-black"><i class="zmdi zmdi-eye"></i></button></a>
+                            </td>
+                            <td class="p-4 border-b border-blue-gray-50">
                                         <img src="{{ asset('storage/evento_'. $evento->id . '.jpg') }}" width="100">
                             </td>
                             <td class="ml-auto relative p-4 border-b border-blue-gray-50">
                                 <div>
-                                    <a href="/admin/evento/editar/ {{$evento->id}}"><button type="button" class="bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2"><i class="zmdi zmdi-edit"></i></button></a>
+                                    <a href="/admin/evento/editar/ {{$evento->id}}"><button type="button" class=" px-5 py-2.5 text-center mb-2 rounded-lg border border-black"><i class="zmdi zmdi-edit"></i></button></a>
                                 </div>
                                 <div>
-                                    <a class="px-6 py-3 text-center" href="/admin/evento/{{$evento->id}}"><button type="button" class="bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"><i class="zmdi zmdi-delete"></i></button></a>
+                                    <a class="px-6 py-3 text-center" href="/admin/evento/{{$evento->id}}"><button type="button" class="rounded-lg border border-black px-5 py-2.5 text-center me-2 mb-2"><i class="zmdi zmdi-delete"></i></button></a>
                                 </div>
                                 
                             </td>
                         </tr>
+                        
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
+
+        <script src="https://unpkg.com/flowbite@1.4.4/dist/flowbite.js"></script>
+
 </x-mi-layout>

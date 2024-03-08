@@ -72,7 +72,12 @@
                 
                 <p>
                     @foreach ($usuarios as $usuario)
-                        {{ $usuario -> nombre }} <br>
+                        <div class="grid grid-cols-2">
+                            {{ $usuario -> nombre }} <br>
+                            @if ($usuario->id == Auth::user()->id) 
+                                <a href="/admin/evento/borrarInscripcion/{{$usuario->id}}/{{$evento->id}}"><button class="border border-black rounded-lg p-2">x</button></a>
+                            @endif
+                        </div>
                     @endforeach
                 </p>
                 
