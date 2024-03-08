@@ -6,6 +6,7 @@ use App\Http\Controllers\EventoController;
 use App\Http\Controllers\ExperienciaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Models\Evento;
 use App\Models\Experiencia;
 use Illuminate\Support\Facades\Route;
@@ -23,18 +24,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $evento = Evento::whereDate('fecha', '>=', now())
-                            ->take(4)
+                            ->take(6)
                             ->get();
     return view('welcome', ['eventos' => $evento]);
 });
 
-Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('milogout');
+Route::get('/logout', [AuthenticatedSessionController ::class, 'destroy'])->name('milogout');
 
 
 // DASHBOARD
 Route::get('/dashboard', [EventoController::class, 'dashboard'])->name('dashboard');
 
-Route::post('/web', [WebController::class, 'web'])->name('web');
+Route::get('/web', [WebController::class, 'web'])->name('web');
 
 Route::prefix('web')->group(function() {
     // EVENTOS

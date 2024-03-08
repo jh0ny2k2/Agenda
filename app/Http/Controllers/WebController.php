@@ -15,7 +15,7 @@ class WebController extends Controller
 
     public function web() {
         $eventos = Evento::whereDate('fecha', '>=', now())
-                 ->take(4)
+                 ->take(6)
                  ->get();
         return view('welcome', ['eventos' => $eventos]);
     }

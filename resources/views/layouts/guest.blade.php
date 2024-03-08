@@ -16,22 +16,20 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
-    <section class="flex flex-col md:flex-row h-screen items-center">
 
-        <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
-            <img src="https://source.unsplash.com/random" alt="" class="w-full h-full object-cover">
+    <section class="bg-white dark:bg-gray-900">
+    <div class="flex justify-center min-h-screen">
+        <div class="hidden bg-cover lg:block lg:w-2/5" style="background-image: url('https://source.unsplash.com/random')">
         </div>
 
-        <div class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12
-            flex items-center justify-center">
-
-            <div class="w-full h-100">
+        <div class="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
+            <div class="w-full">
 
                 {{ $slot }}
 
             </div>
         </div>
-
-        </section>
+    </div>
+</section>
     </body>
 </html>
