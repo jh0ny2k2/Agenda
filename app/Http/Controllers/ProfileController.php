@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
+use App\Models\Categoria;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,21 @@ class ProfileController extends Controller
     {
         $usuarios = User::all();
         return view('/dashboard/usuarios', ['usuarios' => $usuarios]);
+    }
+
+    public function cambiarRol($id)
+    {
+        $usuario = User::where('id' ,$id)->first();
+        return view('/dashboard/usuario/cambiarRol', ['usuario' => $usuario]);
+    }
+
+    public function updateRol(Request $request, $id) {
+
+        $usuario = User::where('id', $id)->first();
+        $usuario->rol = $request->rol;
+        $usuario->save();
+
+        return redirect()->route('usuarios');
     }
     /**
      * Display the user's profile form.

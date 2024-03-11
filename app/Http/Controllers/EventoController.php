@@ -63,6 +63,7 @@ class EventoController extends Controller
         $evento->tipo = $request->tipo;
         $evento->numMaxEntradasPorPersona  = $request->entradas;
         $evento->CategoriaId =  $request->categorias;
+        $evento->usuarioId = $request->usuario;
         $evento->save();
 
         $id = $evento->id;

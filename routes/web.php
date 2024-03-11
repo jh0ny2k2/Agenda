@@ -64,6 +64,8 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:administrador,cre
     // USUARIOS
     Route::get('/usuarios', [ProfileController::class, 'index'])->name('usuarios');
     Route::get('/delUsuario/{id}', [ProfileController::class, 'delete']);
+    Route::get('/usuario/irCambiarRol/{id}', [ProfileController::class, 'cambiarRol']);
+    Route::post('/usuario/updateRol/{id}', [ProfileController::class, 'updateRol']);
 
     // EVENTOS
     Route::get('/eventos', [EventoController::class, 'index'])->name('eventos');
@@ -73,7 +75,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'mdrol:administrador,cre
     Route::post('/evento/update/{id}', [EventoController::class, 'update'])->name('updateEvento');
     Route::get('/evento/{id}', [EventoController::class, 'destroy']);
     Route::get('/evento/verInscritos/{id}', [EventoController::class, 'show']);
-    Route::get('/evento/eliminarInscrito/{id}/{id}', [EventoController::class, 'borrarInscripcion']);
+    // Route::get('/evento/eliminarInscrito/{id}/{id}', [EventoController::class, 'borrarInscripcion']);
     
     // EXPERIENCIA
     Route::get('/experiencias', [ExperienciaController::class, 'index'])->name('experiencias');

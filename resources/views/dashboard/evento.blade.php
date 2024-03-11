@@ -170,7 +170,7 @@
                             </td>
                             <td class="ml-auto relative p-4 border-b border-blue-gray-50">
                                 <div>
-                                    <a href="/admin/evento/editar/ {{$evento->id}}"><button type="button" class=" px-5 py-2.5 text-center mb-2 rounded-lg border border-black"><i class="zmdi zmdi-edit"></i></button></a>
+                                    <a href=""><button type="button" class=" px-5 py-2.5 text-center mb-2 rounded-lg border border-black"><i class="zmdi zmdi-edit"></i></button></a>
                                 </div>
                                 <div>
                                     <a class="px-6 py-3 text-center" href="/admin/evento/{{$evento->id}}"><button type="button" class="rounded-lg border border-black px-5 py-2.5 text-center me-2 mb-2"><i class="zmdi zmdi-delete"></i></button></a>
