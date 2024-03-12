@@ -65,8 +65,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        echo 'hola';
-        // Categoria::destroy($id);
-        // return redirect()->route('categorias');
+        Categoria::destroy($id);
+        return redirect()->route('categorias');
     }
 }
